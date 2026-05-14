@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  .project-card {
+    @apply
+    block
+    w-100
+    min-h-50
+    mr-5
+    mb-5
+    px-6
+    py-3
+    bg-stone-950
+    border
+    border-stone-700
+    rounded-lg
+    hover:shadow-lg
+    hover:shadow-amber-400/20
+    hover:border-amber-400
+    hover:-translate-y-1
+    transition duration-300;
+  }
+}

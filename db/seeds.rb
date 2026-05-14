@@ -7,3 +7,19 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+projects = [
+  {
+    name: "Jigsaw Puzzle App",
+    subdomain: "jigsaw",
+    description: "A test app for devops learnin' and practice."
+  },
+  {
+    name: "Non-Existent App",
+    subdomain: "none"
+  }
+]
+
+projects.each do |project|
+  Project.find_or_create_by!(project)
+end
