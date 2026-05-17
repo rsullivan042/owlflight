@@ -19,7 +19,7 @@ end
 Dir.glob(Rails.root.join("db/seeds/posts/*.md")).each do |file|
   parsed = FrontMatterParser::Parser.parse_file(file)
 
-  BlogPost.create!(
+  BlogPost.find_or_create_by!(
     title: parsed.front_matter["title"],
     slug: parsed.front_matter["slug"],
     description: parsed.front_matter["description"],
