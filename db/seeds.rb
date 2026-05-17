@@ -1,18 +1,10 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+require "front_matter_parser"
 
 projects = [
   {
     name: "Jigsaw Puzzle App",
     subdomain: "jigsaw",
-    description: "A test app for devops learnin' and practice."
+    description: "An older test app used primary to learn and practice devops. Currently incomplete and in rough shape, but I hope to revisit it in the near future after finishing work on Owlflight."
   },
   {
     name: "Non-Existent App",
@@ -22,4 +14,16 @@ projects = [
 
 projects.each do |project|
   Project.find_or_create_by!(project)
+end
+
+Dir.glob(Rails.root.join("db/seeds/posts/*.md")).each do |file|
+  parsed = FrontMatterParser::Parser.parse_file(file)
+
+  BlogPost.create!(
+    title: parsed.front_matter["title"],
+    slug: parsed.front_matter["slug"],
+    description: parsed.front_matter["description"],
+    published_at: Time.zone.parse(parsed.front_matter["published_at"].to_s),
+    content: parsed.content
+  )
 end

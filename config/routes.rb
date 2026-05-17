@@ -13,6 +13,14 @@ Rails.application.routes.draw do
   root "pages#home"
 
   get "/about_me", to: "pages#about_me"
-  get "/projects", to: "projects#index"
-  get "/blog", to: "blog_posts#index"
+
+  resources :projects, only: [ :index ]
+  resources :blog_posts, path: "blog", only: [ :index, :show ]
+
+  namespace :admin do
+    root "dashboard#index"
+
+    resources :projects
+    resources :blog_posts
+  end
 end

@@ -1,0 +1,6 @@
+<div class="flex flex-col size-2/3 mt-5">
+  <div class="text-amber-400 text-2xl mb-1"><%= @blog_post.title %></div>
+  <div class="italic mb-4 ml-1"><%= @blog_post.formatted_datetime %></div>
+  <hr class="size-full self-center mb-4 border-0 h-px bg-[linear-gradient(to_right,transparent_0%,#fbbf24_20%,#fbbf24_80%,transparent_100%)]" />
+  <div class="prose prose-invert"><%= markdown(@blog_post.content) %></div>
+</div>
