@@ -8,8 +8,12 @@ class BlogPost < ApplicationRecord
     slug
   end
 
-  def self.latest
-    BlogPost.last
+  def self.latest(limit = 3)
+    order(created_at: :desc).limit(limit)
+  end
+
+  def formatted_date
+    published_at.strftime("%b %d, %Y")
   end
 
   def formatted_datetime
