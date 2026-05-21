@@ -1,4 +1,4 @@
-<div class="flex flex-col size-2/3 mt-5 mb-20">
+<div class="flex flex-col mx-auto mt-5 mb-20">
   <div class="flex flex-row text-amber-400 text-2xl mb-1">
     <div class="grow">
       <%= @blog_post.title %>
@@ -23,5 +23,5 @@
 
   <hr class="size-full self-center border-0 h-px bg-[linear-gradient(to_right,transparent_0%,#fbbf24_20%,#fbbf24_80%,transparent_100%)]" />
 
-  <div class="prose prose-invert m-4"><%= markdown(@blog_post.content) %></div>
+  <div class="prose prose-invert mx-auto m-4"><%= markdown(@blog_post.content) %></div>
 </div>
