@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_05_17_005455) do
+ActiveRecord::Schema[8.0].define(version: 2026_05_21_003515) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -30,5 +30,18 @@ ActiveRecord::Schema[8.0].define(version: 2026_05_17_005455) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "current"
+    t.index ["current"], name: "index_projects_on_current", unique: true, where: "(current = true)"
   end
+
+  create_table "tasks", force: :cascade do |t|
+    t.bigint "project_id", null: false
+    t.string "description"
+    t.boolean "completed", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_tasks_on_project_id"
+  end
+
+  add_foreign_key "tasks", "projects"
 end

@@ -1,0 +1,15 @@
+<%= form_with model: [:admin, :project, task], class: "space-y-6" do |form| %>
+  <div>
+    <%= form.label :description %>
+    <%= form.text_field :description, class: "form-text-field" %>
+  </div>
+
+  <div>
+    <%= form.check_box :completed, class: "w-4 h-4 rounded border-stone-700 bg-stone-900 text-amber-400 focus:ring-amber-400" %>
+    <%= form.label :completed %>
+  </div>
+
+  <div>
+    <%= form.submit class: "bg-amber-400 text-black px-4 py-2 rounded hover:bg-amber-300 cursor-pointer" %>
+  </div>
+<% end %>

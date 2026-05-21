@@ -29,4 +29,15 @@
     hover:-translate-y-1
     transition duration-300;
   }
+
+  .form-text-field {
+    @apply
+    w-full
+    rounded
+    bg-stone-900
+    border
+    border-stone-700
+    px-4
+    py-2
+  }
 }

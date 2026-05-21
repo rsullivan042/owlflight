@@ -1,3 +1,7 @@
-<div class="flex justify-center">
+<div class="inline-flex flex-col">
+  <%= link_to new_admin_blog_post_path, class: "flex flex-row text-amber-400 mb-4" do %>
+    <%= image_tag "icons/square-plus.svg", class: "mr-1" %>
+    Create Post
+  <% end %>
   <%= render @blog_posts %>
 </div>

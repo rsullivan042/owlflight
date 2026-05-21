@@ -1,1 +1,59 @@
-In development!
+<% current_project = Project.current %>
+
+<div class="max-w-5xl mx-auto px-4 space-y-12">
+  <section class="text-center max-w-3xl mx-auto">
+    <p class="text-stone-300 text-lg leading-relaxed">
+      Welcome! I’m a web application developer focused on building applications with Ruby on Rails and sharing what I learn along the way.
+    </p>
+  </section>
+
+  <section>
+    <h2 class="text-amber-400 text-2xl mb-4">Current Project</h2>
+
+    <div class="flex flex-col md:flex-row items-center md:items-start justify-center gap-6">
+      <% if current_project.present? %>
+        <%= render current_project %>
+      <% else %>
+        <div class="text-stone-400 italic w-full h-full">
+          No project currently in progress.
+        </div>
+      <% end %>
+
+      <div class="bg-stone-900/60 border border-stone-700 rounded-lg p-6 max-w-sm">
+        <h3 class="text-stone-100 text-xl mb-4">Current Tasks</h3>
+
+        <% if current_project.present? %>
+          <ul class="ml-6 space-y-1 text-stone-300">
+            <% current_project.tasks.each do |task| %>
+              <li class="flex items-center gap-3">
+                <span class="w-5 text-center">
+                  <% if task.completed? %>
+                    <%= image_tag "icons/check.svg", class: "w-4 h-4 inline" %>
+                  <% else %>
+                    -
+                  <% end %>
+                </span>
+
+                <span>
+                  <%= task.description %>
+                </span>
+              </li>
+            <% end %>
+          </ul>
+        <% else %>
+          <div class="text-stone-400 italic">
+            No project currently in progress.
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="text-amber-400 text-2xl mb-4">Latest Blog Post</h2>
+
+    <div class="flex justify-center">
+      <%= render BlogPost.latest %>
+    </div>
+  </section>
+</div>

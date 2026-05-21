@@ -1,0 +1,11 @@
+<div class="flex flex-row">
+  <%= link_to admin_blog_post_path(blog_post), class: "notification" do %>
+    <div class="notiglow"></div>
+    <div class="notiborderglow"></div>
+    <div class="notititle">
+      <span class="grow"><%= blog_post.title %></span>
+      <span class="notidate shrink"><%= blog_post.formatted_datetime %></span>
+    </div>
+    <div class="notibody line-clamp-3"><%= blog_post.description %></div>
+  <% end %>
+</div>

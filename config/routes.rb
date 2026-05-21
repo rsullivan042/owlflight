@@ -20,7 +20,9 @@ Rails.application.routes.draw do
   namespace :admin do
     root "dashboard#index"
 
-    resources :projects
+    resources :projects do
+      resources :tasks
+    end
     resources :blog_posts
   end
 end

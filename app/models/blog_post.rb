@@ -8,6 +8,10 @@ class BlogPost < ApplicationRecord
     slug
   end
 
+  def self.latest
+    BlogPost.last
+  end
+
   def formatted_datetime
     published_at.strftime("%b %d, %Y (%-l:%M %P)")
   end

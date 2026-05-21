@@ -25,11 +25,18 @@
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <%= favicon_link_tag "favicon.svg" %>
   </head>
 
   <body class="bg-black text-stone-100 min-h-screen">
     <%= render "shared/header" %>
-    <%= render "shared/navbar" %>
+
+    <% if admin_namespace? %>
+      <%= render "shared/admin_navbar" %>
+    <% else %>
+      <%= render "shared/navbar" %>
+    <% end %>
 
     <%# <div class="h-12 bg-linear-to-b from-black to-stone-900"></div> %>
 

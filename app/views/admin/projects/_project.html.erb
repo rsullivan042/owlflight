@@ -1,5 +1,17 @@
 <div class="project-card">
-  <%= link_to "Edit", admin_project_path(project) %>
+  <div class="flex flex-row w-full justify-end mb-2">
+    <%= link_to edit_admin_project_path(project) do %>
+      <%= image_tag "icons/square-pen.svg", class: "ml-1" %>
+    <% end %>
+
+    <%= link_to admin_project_path(project),
+      data: {
+        turbo_method: :delete,
+        turbo_confirm: "Delete this project?"
+      } do %>
+      <%= image_tag "icons/trash.svg", class: "ml-1" %>
+    <% end %>
+  </div>
 
   <a href="<%= project.url %>">
 

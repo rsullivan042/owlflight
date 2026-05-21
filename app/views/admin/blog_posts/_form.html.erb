@@ -1,0 +1,18 @@
+<%= form_with model: [:admin, blog_post], class: "space-y-6 mb-10" do |form| %>
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title, class: "form-text-field" %>
+  </div>
+
+  <div>
+    <%= form.label :description %>
+    <%= form.text_area :description, rows: 5, class: "form-text-field" %>
+  </div>
+
+  <div>
+    <%= form.label :content %>
+    <%= form.text_area :content, rows: 18, class: "w-full rounded bg-stone-900 border border-stone-700 px-4 py-2 font-mono" %>
+  </div>
+
+  <%= form.submit class: "bg-amber-400 text-black px-4 py-2 rounded cursor-pointer" %>
+<% end %>

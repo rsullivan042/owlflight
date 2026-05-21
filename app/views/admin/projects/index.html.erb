@@ -1,3 +1,9 @@
-<div class="flex justify-center">
-  <%= render @projects %>
+<div class="flex flex-col">
+  <%= link_to new_admin_project_path, class: "flex flex-row text-amber-400 mb-4" do %>
+    <%= image_tag "icons/square-plus.svg", class: "mr-1" %>
+    Create Project
+  <% end %>
+  <div class="flex flex-wrap justify-center">
+    <%= render @projects %>
+  </div>
 </div>

@@ -1,6 +1,6 @@
 class Admin::BlogPostsController < Admin::BaseController
   def index
-    @blog_posts = BlogPost.all
+    @blog_posts = BlogPost.all.order(published_at: :desc)
   end
 
   def show
@@ -43,6 +43,6 @@ class Admin::BlogPostsController < Admin::BaseController
   private
 
   def blog_post_params
-    params.require(:blog_post).permit(:title, :slug, :content, :excerpt)
+    params.require(:blog_post).permit(:title, :content, :description)
   end
 end

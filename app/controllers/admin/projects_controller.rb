@@ -1,6 +1,6 @@
 class Admin::ProjectsController < Admin::BaseController
   def index
-    @projects = Project.all
+    @projects = Project.order(updated_at: :desc)
   end
 
   def show
@@ -13,8 +13,11 @@ class Admin::ProjectsController < Admin::BaseController
 
   def create
     @project = Project.new(project_params)
+
+    Project.clear_current! if project_params[:current]
+
     if @project.save
-      redirect_to [ :admin, @project ], notice: "Project created successfully."
+      redirect_to admin_projects_path, notice: "Project created successfully."
     else
       render :new
     end
@@ -26,8 +29,11 @@ class Admin::ProjectsController < Admin::BaseController
 
   def update
     @project = Project.find(params[:id])
+
+    Project.clear_current! if project_params[:current]
+
     if @project.update(project_params)
-      redirect_to [ :admin, @project ], notice: "Project successfully updated."
+      redirect_to admin_projects_path, notice: "Project successfully updated."
     else
       render :edit
     end
@@ -35,6 +41,7 @@ class Admin::ProjectsController < Admin::BaseController
 
   def destroy
     @project = Project.find(params[:id])
+
     @project.destroy
     redirect_to admin_projects_path, notice: "Project deleted successfully."
   end
@@ -42,6 +49,6 @@ class Admin::ProjectsController < Admin::BaseController
   private
 
   def project_params
-    params.require(:project).permit(:name, :subdomain, :description)
+    params.require(:project).permit(:name, :subdomain, :description, :current)
   end
 end
