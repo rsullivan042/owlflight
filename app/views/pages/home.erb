@@ -12,8 +12,9 @@
     <div class="bg-stone-900/40 border border-stone-800 rounded-xl p-5 h-full">
       <h2 class="text-amber-400 text-2xl mb-4">Current Project</h2>
       <% if current_project %>
-        <h3 class="text-stone-100 text-xl font-semibold mb-4">
-          <%= current_project.name %>
+        <h3 class="text-stone-100 text-xl mb-4 hover:text-amber-300 font-semibold grow">
+          <%= link_to current_project.name,
+              current_project.url %>
         </h3>
 
         <div class="bg-stone-900 w-full h-48 flex items-center justify-center">
@@ -25,10 +26,6 @@
         <p class="text-stone-400 mt-2 line-clamp-3">
           <%= current_project.description %>
         </p>
-
-        <%= link_to "View project",
-            current_project.url,
-            class: "inline-block mt-4 text-amber-400 hover:text-amber-300" %>
       <% else %>
         <p class="text-stone-400 italic">No current project selected.</p>
       <% end %>
