@@ -1,4 +1,4 @@
-<div class="bg-black min-w-screen flex justify-center">
+<div class="bg-black min-w-full flex justify-center">
   <% navbar_links.each do |button| %>
     <button>
       <%= link_to button[:text], button[:path], class: nav_link_classes(button[:path]) %>
