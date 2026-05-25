@@ -2,6 +2,7 @@ class BlogPost < ApplicationRecord
   before_validation :generate_slug
   before_create :set_published_at
 
+  validates :title, presence: true
   validates :slug, uniqueness: true
 
   def to_param

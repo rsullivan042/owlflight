@@ -3,10 +3,6 @@ class Admin::ProjectsController < Admin::BaseController
     @projects = Project.order(updated_at: :desc)
   end
 
-  def show
-    @project = Project.find(params[:id])
-  end
-
   def new
     @project = Project.new
   end
@@ -19,7 +15,7 @@ class Admin::ProjectsController < Admin::BaseController
     if @project.save
       redirect_to admin_projects_path, notice: "Project created successfully."
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -35,7 +31,7 @@ class Admin::ProjectsController < Admin::BaseController
     if @project.update(project_params)
       redirect_to admin_projects_path, notice: "Project successfully updated."
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 

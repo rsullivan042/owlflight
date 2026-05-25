@@ -5,10 +5,6 @@ class Admin::TasksController < Admin::BaseController
     @tasks = @project.tasks
   end
 
-  def show
-    @task = @project.tasks.find(params[:id])
-  end
-
   def new
     @task = @project.tasks.new
   end

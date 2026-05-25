@@ -17,7 +17,7 @@ class Admin::BlogPostsController < Admin::BaseController
     if @blog_post.save
       redirect_to [ :admin, @blog_post ], notice: "Blog post created successfully."
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -30,7 +30,7 @@ class Admin::BlogPostsController < Admin::BaseController
     if @blog_post.update(blog_post_params)
       redirect_to [ :admin, @blog_post ], notice: "Blog post successfully updated."
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
