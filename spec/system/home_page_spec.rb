@@ -1,9 +1,9 @@
 require "rails_helper"
 
 RSpec.describe "Home page", type: :system do
-  it "shows the welcome heading" do
+  it "shows the tagline" do
     visit root_path
-    expect(page).to have_text("Welcome to OwlFlight!")
+    expect(page).to have_text("Building things, sharing what I learn.")
   end
 
   context "when there is a current project" do
