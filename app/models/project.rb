@@ -1,5 +1,6 @@
 class Project < ApplicationRecord
-  validates_presence_of :name, :subdomain
+  validates :name, presence: true
+  validates :subdomain, presence: true
 
   has_many :tasks, dependent: :destroy
 
@@ -18,6 +19,8 @@ class Project < ApplicationRecord
       "https://owlflight.dev"
     end
   end
+
+  # Class methods
 
   def self.current
     find_by(current: true)

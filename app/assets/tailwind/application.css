@@ -8,7 +8,7 @@
 }
 
 @layer components {
-  .project-card {
+  /* .project-card {
     @apply
     block
     w-100
@@ -28,7 +28,7 @@
     hover:border-amber-400
     hover:-translate-y-1
     transition duration-300;
-  }
+  } */
 
   .form-text-field {
     @apply
@@ -38,6 +38,15 @@
     border
     border-stone-700
     px-4
-    py-2
+    py-2;
+  }
+
+  .section-divider {
+    @apply
+    size-full
+    self-center
+    border-0
+    h-px
+    bg-[linear-gradient(to_right,transparent_0%,#fbbf24_20%,#fbbf24_80%,transparent_100%)];
   }
 }

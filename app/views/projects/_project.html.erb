@@ -1,15 +1,8 @@
-<%= link_to project_path(project), class: "project-card" do %>
+<%= link_to project_path(project), class: "entry" do %>
+  <div class="entry-glow"></div>
+  <div class="entry-border-glow"></div>
 
-  <h2 class="text-xl font-semibold text-stone-100">
-    <%= project.name %>
-  </h2>
-
-  <ul>
-    <li class="mt-2">
-      <p class="text-stone-400">
-        <%= project.description %>
-      </p>
-    </li>
-  </ul>
-
+  <div class="entry-title"><%= project.name %></div>
+  
+  <div class="entry-body line-clamp-3"><%= project.description %></div>
 <% end %>

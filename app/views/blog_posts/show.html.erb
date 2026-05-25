@@ -2,8 +2,11 @@
 
 <div class="flex flex-col mx-auto mt-5 mb-20">
   <div class="text-amber-400 text-2xl mb-1"><%= @blog_post.title %></div>
+
   <div class="italic mb-4 ml-1"><%= @blog_post.formatted_datetime %></div>
-  <hr class="size-full self-center border-0 h-px bg-[linear-gradient(to_right,transparent_0%,#fbbf24_20%,#fbbf24_80%,transparent_100%)]" />
+
+  <hr class="section-divider" />
+  
   <div class="prose prose-invert mx-auto my-4 px-4 max-w-3xl prose-pre:overflow-x-auto">
     <%= markdown(@blog_post.content) %>
   </div>

@@ -1,11 +1,13 @@
 <div class="flex flex-row">
-  <%= link_to admin_blog_post_path(blog_post), class: "notification" do %>
-    <div class="notiglow"></div>
-    <div class="notiborderglow"></div>
-    <div class="notititle">
+  <%= link_to admin_blog_post_path(blog_post), class: "entry" do %>
+    <div class="entry-glow"></div>
+    <div class="entry-border-glow"></div>
+
+    <div class="entry-title">
       <span class="grow"><%= blog_post.title %></span>
-      <span class="notidate shrink"><%= blog_post.formatted_datetime %></span>
+      <span class="entry-date shrink"><%= blog_post.formatted_datetime %></span>
     </div>
-    <div class="notibody line-clamp-3"><%= blog_post.description %></div>
+    
+    <div class="entry-body line-clamp-3"><%= blog_post.description %></div>
   <% end %>
 </div>

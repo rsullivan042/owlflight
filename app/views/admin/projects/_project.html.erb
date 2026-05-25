@@ -1,31 +1,8 @@
-<div class="project-card">
-  <div class="flex flex-row w-full justify-end mb-2">
-    <%= link_to edit_admin_project_path(project) do %>
-      <%= image_tag "icons/square-pen.svg", class: "ml-1" %>
-    <% end %>
+<%= link_to admin_project_path(project), class: "entry" do %>
+  <div class="entry-glow"></div>
+  <div class="entry-border-glow"></div>
 
-    <%= link_to admin_project_path(project),
-      data: {
-        turbo_method: :delete,
-        turbo_confirm: "Delete this project?"
-      } do %>
-      <%= image_tag "icons/trash.svg", class: "ml-1" %>
-    <% end %>
-  </div>
-
-  <a href="<%= project.url %>">
-
-    <h2 class="text-xl font-semibold text-stone-100">
-      <%= project.name %>
-    </h2>
-
-    <ul>
-      <li class="mt-2">
-        <p class="text-stone-400">
-          <%= project.description %>
-        </p>
-      </li>
-    </ul>
-
-  </a>
-</div>
+  <div class="entry-title"><%= project.name %></div>
+  
+  <div class="entry-body line-clamp-3"><%= project.description %></div>
+<% end %>
