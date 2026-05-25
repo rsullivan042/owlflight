@@ -37,5 +37,20 @@ RSpec.describe "Projects", type: :system do
       visit project_path(project)
       expect(page).to have_link("Visit Project →", href: project.url)
     end
+
+    it "displays tasks" do
+      project = create(:project)
+      create(:task, project: project, description: "Write tests", completed: false)
+      create(:task, project: project, description: "Deploy app", completed: true)
+      visit project_path(project)
+      expect(page).to have_text("Write tests")
+      expect(page).to have_text("Deploy app")
+    end
+
+    it "shows the no tasks message when there are none" do
+      project = create(:project)
+      visit project_path(project)
+      expect(page).to have_text("No tasks yet.")
+    end
   end
 end

@@ -1,0 +1,21 @@
+<% if project.tasks.any? %>
+  <ul class="space-y-1">
+    <% project.tasks.each do |task| %>
+      <li class="flex items-center gap-3 text-stone-300">
+        <span class="w-5 flex items-center justify-center">
+          <% if task.completed? %>
+            <%= image_tag "icons/check.svg", class: "w-4 h-4" %>
+          <% else %>
+            -
+          <% end %>
+        </span>
+
+        <span class="flex-1">
+          <%= task.description %>
+        </span>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p class="text-stone-400 italic">No tasks yet.</p>
+<% end %>

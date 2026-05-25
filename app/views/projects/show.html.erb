@@ -14,11 +14,11 @@
   <hr class="section-divider" />
 
   <% if @project.description.present? %>
-    <p class="text-stone-300 leading-relaxed mb-6"><%= @project.description %></p>
+    <p class="text-stone-300 leading-relaxed my-4 mb-6"><%= @project.description %></p>
   <% end %>
 
   <% if @project.tech_stack.any? %>
-    <div>
+    <div class="mb-6">
       <h2 class="text-amber-400 text-lg mb-3">Tech Stack</h2>
       <div class="flex flex-wrap gap-2">
         <% @project.tech_stack.each do |tech| %>
@@ -29,4 +29,9 @@
       </div>
     </div>
   <% end %>
+
+  <div>
+    <h2 class="text-amber-400 text-lg mb-3">Tasks</h2>
+    <%= render "shared/task_list", project: @project %>
+  </div>
 </div>

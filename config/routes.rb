@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     root "dashboard#index"
 
     resources :projects do
-      resources :tasks
+      resources :tasks, except: [:index]
     end
     resources :blog_posts
   end

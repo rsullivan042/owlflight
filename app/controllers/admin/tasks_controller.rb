@@ -1,10 +1,6 @@
 class Admin::TasksController < Admin::BaseController
   before_action :set_project
 
-  def index
-    @tasks = @project.tasks
-  end
-
   def new
     @task = @project.tasks.new
   end
@@ -13,7 +9,7 @@ class Admin::TasksController < Admin::BaseController
     @task = @project.tasks.new(task_params)
 
     if @task.save
-      redirect_to admin_project_tasks_path(@project)
+      redirect_to admin_project_path(@project)
     else
       render :new
     end
@@ -27,7 +23,7 @@ class Admin::TasksController < Admin::BaseController
     @task = @project.tasks.find(params[:id])
 
     if @task.update(task_params)
-      redirect_to admin_project_tasks_path(@project)
+      redirect_to admin_project_path(@project)
     else
       render :edit
     end
@@ -37,7 +33,7 @@ class Admin::TasksController < Admin::BaseController
     @task = @project.tasks.find(params[:id])
 
     @task.destroy
-    redirect_to admin_project_tasks_path(@project)
+    redirect_to admin_project_path(@project)
   end
 
   private

@@ -16,13 +16,6 @@ module ApplicationHelper
         { text: "Main Site", path: root_path }
       ]
 
-    if Project.current
-      navbar_links.insert(
-        2,
-        { text: "Tasks", path: admin_project_tasks_path(Project.current) }
-      )
-    end
-
     navbar_links
   end
 

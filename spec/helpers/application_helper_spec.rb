@@ -17,16 +17,9 @@ RSpec.describe ApplicationHelper, type: :helper do
   end
 
   describe "#admin_navbar_links" do
-    it "returns the base admin links when there is no current project" do
+    it "returns the admin links" do
       links = helper.admin_navbar_links
       expect(links.map { |l| l[:text] }).to eq(["Dashboard", "Projects", "Blog", "Main Site"])
-    end
-
-    it "inserts a Tasks link at position 2 when there is a current project" do
-      project = create(:project, current: true)
-      links = helper.admin_navbar_links
-      expect(links.map { |l| l[:text] }).to eq(["Dashboard", "Projects", "Tasks", "Blog", "Main Site"])
-      expect(links[2][:path]).to eq(admin_project_tasks_path(project))
     end
   end
 

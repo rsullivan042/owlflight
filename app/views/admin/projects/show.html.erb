@@ -20,7 +20,7 @@
   <hr class="section-divider" />
 
   <% if @project.description.present? %>
-    <p class="text-stone-300 leading-relaxed mb-6"><%= @project.description %></p>
+    <p class="text-stone-300 leading-relaxed my-4 mb-6"><%= @project.description %></p>
   <% end %>
 
   <% if @project.tech_stack.any? %>
@@ -37,19 +37,41 @@
   <% end %>
 
   <div>
-    <h2 class="text-amber-400 text-lg mb-3">Tasks</h2>
+    <div class="flex items-center mb-3">
+      <h2 class="text-amber-400 text-lg grow">Tasks</h2>
+      <%= link_to new_admin_project_task_path(@project), class: "flex items-center text-amber-400" do %>
+        <%= image_tag "icons/square-plus.svg", class: "mr-1" %>
+        Add Task
+      <% end %>
+    </div>
+
     <% if @project.tasks.any? %>
       <ul class="space-y-1">
         <% @project.tasks.each do |task| %>
           <li class="flex items-center gap-3 text-stone-300">
-            <span class="w-5 text-center">
+            <span class="w-5 flex items-center justify-center">
               <% if task.completed? %>
-                <%= image_tag "icons/check.svg", class: "w-4 h-4 inline" %>
+                <%= image_tag "icons/check.svg", class: "w-4 h-4" %>
               <% else %>
                 -
               <% end %>
             </span>
-            <span><%= task.description %></span>
+
+            <span class="flex-1"><%= task.description %></span>
+
+            <span class="flex items-center">
+              <%= link_to edit_admin_project_task_path(@project, task) do %>
+                <%= image_tag "icons/square-pen.svg", class: "w-4 h-4 ml-2" %>
+              <% end %>
+
+              <%= link_to admin_project_task_path(@project, task),
+                data: {
+                  turbo_method: :delete,
+                  turbo_confirm: "Delete this task?"
+                } do %>
+                <%= image_tag "icons/trash.svg", class: "w-4 h-4 ml-2" %>
+              <% end %>
+            </span>
           </li>
         <% end %>
       </ul>

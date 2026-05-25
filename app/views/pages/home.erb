@@ -28,23 +28,7 @@
     <div class="bg-stone-900/40 border border-stone-800 rounded-xl p-5 h-full">
       <h2 class="text-amber-400 text-2xl mb-4">Current Tasks</h2>
       <% if current_project %>
-        <ul class="space-y-1">
-          <% current_project.tasks.each do |task| %>
-            <li class="flex items-center gap-3">
-              <span class="w-5 text-center">
-                <% if task.completed? %>
-                  <%= image_tag "icons/check.svg", class: "w-4 h-4 inline" %>
-                <% else %>
-                  -
-                <% end %>
-              </span>
-
-              <span class="flex-1">
-                <%= task.description %>
-              </span>
-            </li>
-          <% end %>
-        </ul>
+        <%= render "shared/task_list", project: current_project %>
       <% else %>
         <p class="text-stone-400 italic">No current project selected.</p>
       <% end %>
