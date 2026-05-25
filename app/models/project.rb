@@ -26,7 +26,9 @@ class Project < ApplicationRecord
     find_by(current: true)
   end
 
-  def self.clear_current!
-    where(current: true).update_all(current: false)
+  def self.clear_current!(except: nil)
+    scope = where(current: true)
+    scope = scope.where.not(id: except.id) if except
+    scope.update_all(current: false)
   end
 end

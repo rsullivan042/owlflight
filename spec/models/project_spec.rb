@@ -60,5 +60,20 @@ RSpec.describe Project, type: :model do
       Project.clear_current!
       expect(project.reload.current).to be_nil
     end
+
+    context "with except:" do
+      it "does not clear the excepted project" do
+        project = create(:project, current: true)
+        Project.clear_current!(except: project)
+        expect(project.reload.current).to be true
+      end
+
+      it "clears other current projects but spares the excepted one" do
+        current = create(:project, current: true)
+        incoming = create(:project)
+        Project.clear_current!(except: incoming)
+        expect(current.reload.current).to be false
+      end
+    end
   end
 end

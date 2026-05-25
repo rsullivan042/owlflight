@@ -30,7 +30,7 @@ class Admin::ProjectsController < Admin::BaseController
   def update
     @project = Project.find(params[:id])
 
-    Project.clear_current! if project_params[:current]
+    Project.clear_current!(except: @project) if project_params[:current]
 
     if @project.update(project_params)
       redirect_to admin_projects_path, notice: "Project successfully updated."
