@@ -29,7 +29,7 @@
     <%= favicon_link_tag "favicon.svg" %>
   </head>
 
-  <body class="bg-black text-stone-100 min-h-screen">
+  <body class="bg-black text-stone-100 min-h-screen flex flex-col">
     <%= render "shared/header" %>
 
     <% if admin_namespace? %>
@@ -40,8 +40,12 @@
 
     <%# <div class="h-12 bg-linear-to-b from-black to-stone-900"></div> %>
 
-    <main class="container mx-auto mt-10 flex justify-center">
+    <main class="container mx-auto mt-6 flex justify-center grow">
       <%= yield %>
     </main>
+
+    <% unless admin_namespace? %>
+      <%= render "shared/footer" %>
+    <% end %>
   </body>
 </html>

@@ -1,18 +1,20 @@
 <% content_for :title, "OwlFlight | About Me" %>
 
-<div class="w-2/3 flex items-start gap-4">
+<div class="max-w-2xl mx-auto px-4 flex flex-col items-center gap-8">
 
-  <%= image_tag "about-me.jpg", class: "w-50 h-auto float-left mr-4 mb-10 cursor-pointer", id: "owl-guy" %>
+  <h1 class="text-3xl font-bold text-amber-400 self-start">About Me</h1>
+
+  <%= image_tag "about-me.jpg", class: "w-48 h-auto cursor-pointer", id: "owl-guy" %>
   <audio id="owl-sound">
     <source src="<%= asset_path('owl.mp3') %>" type="audio/mp3">
   </audio>
 
-  <div>
-    <p class="mb-4">I’m a software engineer with a background in Ruby on Rails, backend systems, and full-stack web development. I enjoy digging into complex bugs, understanding how systems fit together, and building software that is reliable, maintainable, and pleasant to use.</p>
+  <div class="space-y-4">
+    <p>I'm a software engineer with a background in Ruby on Rails, backend systems, and full-stack web development. I enjoy digging into complex bugs, understanding how systems fit together, and building software that is reliable, maintainable, and pleasant to use.</p>
 
-    <p class="mb-4">Recently, I’ve been focusing on sharpening my Rails and infrastructure skills by building and deploying my own applications with tools like PostgreSQL, Nginx, Puma, systemd, and GitHub Actions. I’m also using this site as a place to document what I’m learning as I continue improving as a developer.</p>
+    <p>Recently, I've been focusing on sharpening my Rails and infrastructure skills by building and deploying my own applications with tools like PostgreSQL, Nginx, Puma, systemd, and GitHub Actions. I'm also using this site as a place to document what I'm learning as I continue improving as a developer.</p>
 
-    <p class="mb-4">Outside of code, I’m usually exploring music, games, books, science, or whatever strange question has taken over my brain that week.</p>
+    <p>Outside of code, I'm usually exploring music, games, books, science, or whatever strange question has taken over my brain that week.</p>
   </div>
 
 </div>
