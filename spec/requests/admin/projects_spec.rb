@@ -8,6 +8,14 @@ RSpec.describe "Admin::Projects", type: :request do
     end
   end
 
+  describe "GET /admin/projects/:id" do
+    it "returns 200" do
+      project = create(:project)
+      get admin_project_path(project), headers: admin_headers
+      expect(response).to have_http_status(:ok)
+    end
+  end
+
   describe "GET /admin/projects/new" do
     it "returns 200" do
       get new_admin_project_path, headers: admin_headers

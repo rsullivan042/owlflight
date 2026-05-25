@@ -1,0 +1,60 @@
+<div class="flex flex-col mx-auto mt-5 mb-20 max-w-3xl w-full">
+  <div class="flex flex-row text-amber-400 text-2xl mb-1">
+    <div class="grow"><%= @project.name %></div>
+
+    <div class="flex flex-row justify-center mb-3 mr-2">
+      <%= link_to edit_admin_project_path(@project) do %>
+        <%= image_tag "icons/square-pen.svg", class: "ml-2" %>
+      <% end %>
+
+      <%= link_to admin_project_path(@project),
+        data: {
+          turbo_method: :delete,
+          turbo_confirm: "Delete this project?"
+        } do %>
+        <%= image_tag "icons/trash.svg", class: "ml-2" %>
+      <% end %>
+    </div>
+  </div>
+
+  <hr class="size-full self-center border-0 h-px bg-[linear-gradient(to_right,transparent_0%,#fbbf24_20%,#fbbf24_80%,transparent_100%)] mb-6" />
+
+  <% if @project.description.present? %>
+    <p class="text-stone-300 leading-relaxed mb-6"><%= @project.description %></p>
+  <% end %>
+
+  <% if @project.tech_stack.any? %>
+    <div class="mb-6">
+      <h2 class="text-amber-400 text-lg mb-3">Tech Stack</h2>
+      <div class="flex flex-wrap gap-2">
+        <% @project.tech_stack.each do |tech| %>
+          <span class="bg-stone-800 text-stone-300 text-sm px-3 py-1 rounded-full border border-stone-700">
+            <%= tech %>
+          </span>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+  <div>
+    <h2 class="text-amber-400 text-lg mb-3">Tasks</h2>
+    <% if @project.tasks.any? %>
+      <ul class="space-y-1">
+        <% @project.tasks.each do |task| %>
+          <li class="flex items-center gap-3 text-stone-300">
+            <span class="w-5 text-center">
+              <% if task.completed? %>
+                <%= image_tag "icons/check.svg", class: "w-4 h-4 inline" %>
+              <% else %>
+                -
+              <% end %>
+            </span>
+            <span><%= task.description %></span>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p class="text-stone-400 italic">No tasks yet.</p>
+    <% end %>
+  </div>
+</div>

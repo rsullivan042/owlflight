@@ -1,0 +1,32 @@
+<% content_for :title, "OwlFlight | Projects | #{@project.name}" %>
+
+<div class="flex flex-col mx-auto mt-5 mb-20 max-w-3xl w-full">
+  <div class="flex flex-row items-center mb-4">
+    <div class="text-amber-400 text-2xl grow"><%= @project.name %></div>
+    <%= link_to @project.url,
+        class: "text-stone-400 hover:text-amber-300 text-sm",
+        target: "_blank",
+        rel: "noopener noreferrer" do %>
+      Visit Project &rarr;
+    <% end %>
+  </div>
+
+  <hr class="size-full self-center border-0 h-px bg-[linear-gradient(to_right,transparent_0%,#fbbf24_20%,#fbbf24_80%,transparent_100%)] mb-6" />
+
+  <% if @project.description.present? %>
+    <p class="text-stone-300 leading-relaxed mb-6"><%= @project.description %></p>
+  <% end %>
+
+  <% if @project.tech_stack.any? %>
+    <div>
+      <h2 class="text-amber-400 text-lg mb-3">Tech Stack</h2>
+      <div class="flex flex-wrap gap-2">
+        <% @project.tech_stack.each do |tech| %>
+          <span class="bg-stone-800 text-stone-300 text-sm px-3 py-1 rounded-full border border-stone-700">
+            <%= tech %>
+          </span>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

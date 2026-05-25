@@ -3,6 +3,10 @@ class Admin::ProjectsController < Admin::BaseController
     @projects = Project.order(updated_at: :desc)
   end
 
+  def show
+    @project = Project.find(params[:id])
+  end
+
   def new
     @project = Project.new
   end
@@ -45,6 +49,6 @@ class Admin::ProjectsController < Admin::BaseController
   private
 
   def project_params
-    params.require(:project).permit(:name, :subdomain, :description, :current)
+    params.require(:project).permit(:name, :subdomain, :description, :current, :tech_stack_input)
   end
 end

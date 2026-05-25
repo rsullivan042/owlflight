@@ -3,6 +3,14 @@ class Project < ApplicationRecord
 
   has_many :tasks, dependent: :destroy
 
+  def tech_stack_input
+    tech_stack.join(", ")
+  end
+
+  def tech_stack_input=(value)
+    self.tech_stack = value.split(",").map(&:strip).reject(&:empty?)
+  end
+
   def url
     if subdomain != "none"
       "https://#{subdomain}.owlflight.dev"

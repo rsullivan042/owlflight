@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   get "/about_me", to: "pages#about_me"
 
-  resources :projects, only: [ :index ]
+  resources :projects, only: [ :index, :show ]
   resources :blog_posts, path: "blog", only: [ :index, :show ]
 
   namespace :admin do
