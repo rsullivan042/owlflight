@@ -36,6 +36,13 @@ module ApplicationHelper
     end
   end
 
+  def safe_external_url(url)
+    uri = URI.parse(url)
+    uri.is_a?(URI::HTTPS) || uri.is_a?(URI::HTTP) ? url : "#"
+  rescue URI::InvalidURIError
+    "#"
+  end
+
   def admin_namespace?
     controller_path.start_with?("admin/")
   end

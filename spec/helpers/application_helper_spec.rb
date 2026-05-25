@@ -47,6 +47,24 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
   end
 
+  describe "#safe_external_url" do
+    it "returns the URL for valid https URLs" do
+      expect(helper.safe_external_url("https://example.com")).to eq("https://example.com")
+    end
+
+    it "returns the URL for valid http URLs" do
+      expect(helper.safe_external_url("http://example.com")).to eq("http://example.com")
+    end
+
+    it "returns # for javascript: URLs" do
+      expect(helper.safe_external_url("javascript:alert(1)")).to eq("#")
+    end
+
+    it "returns # for invalid URLs" do
+      expect(helper.safe_external_url("not a url")).to eq("#")
+    end
+  end
+
   describe "#markdown" do
     it "renders markdown to HTML" do
       expect(helper.markdown("**bold**")).to include("<strong>bold</strong>")

@@ -3,7 +3,7 @@
 <div class="flex flex-col mx-auto mt-5 mb-20 max-w-3xl w-full">
   <div class="flex flex-row items-center mb-4">
     <div class="text-amber-400 text-2xl grow"><%= @project.name %></div>
-    <%= link_to @project.url,
+    <%= link_to safe_external_url(@project.url),
         class: "text-stone-400 hover:text-amber-300 text-sm",
         target: "_blank",
         rel: "noopener noreferrer" do %>
