@@ -26,17 +26,17 @@ RSpec.describe ApplicationHelper, type: :helper do
   describe "#nav_link_classes" do
     it "returns active classes for the current page" do
       allow(helper).to receive(:current_page?).and_return(true)
-      expect(helper.nav_link_classes("/")).to include("text-amber-300", "border-amber-400")
+      expect(helper.nav_link_classes("/")).to include("text-amber-400", "border-amber-400")
     end
 
     it "returns inactive classes for other pages" do
       allow(helper).to receive(:current_page?).and_return(false)
-      expect(helper.nav_link_classes("/projects")).to include("button_top_inactive", "text-stone-400")
+      expect(helper.nav_link_classes("/projects")).to include("text-stone-400", "border-transparent")
     end
 
-    it "always includes the base class" do
+    it "always includes the base classes" do
       allow(helper).to receive(:current_page?).and_return(false)
-      expect(helper.nav_link_classes("/projects")).to include("button_top")
+      expect(helper.nav_link_classes("/projects")).to include("border-b-2", "font-medium")
     end
   end
 
