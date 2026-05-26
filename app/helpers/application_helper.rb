@@ -20,12 +20,12 @@ module ApplicationHelper
   end
 
   def nav_link_classes(path)
-    base = "button_top"
+    base = "pb-1 border-b-2 font-medium transition-colors"
 
     if current_page?(path)
-      "#{base} text-amber-300 border-amber-400"
+      "#{base} text-amber-400 border-amber-400"
     else
-      "#{base} button_top_inactive text-stone-400 border-transparent hover:text-stone-100 hover:border-stone-600"
+      "#{base} text-stone-400 border-transparent hover:text-stone-100"
     end
   end
 

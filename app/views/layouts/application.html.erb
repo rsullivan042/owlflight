@@ -44,8 +44,6 @@
       <%= yield %>
     </main>
 
-    <% unless admin_namespace? %>
-      <%= render "shared/footer" %>
-    <% end %>
+    <%= render "shared/footer" %>
   </body>
 </html>
