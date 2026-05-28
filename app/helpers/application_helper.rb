@@ -1,4 +1,6 @@
 module ApplicationHelper
+  include OtelTracing
+
   def navbar_links
     [
       { text: "Home", path: root_path },
@@ -9,14 +11,12 @@ module ApplicationHelper
   end
 
   def admin_navbar_links
-    navbar_links = [
-        { text: "Dashboard", path: admin_root_path },
-        { text: "Projects", path: admin_projects_path },
-        { text: "Blog", path: admin_blog_posts_path },
-        { text: "Main Site", path: root_path }
-      ]
-
-    navbar_links
+    [
+      { text: "Dashboard", path: admin_root_path },
+      { text: "Projects", path: admin_projects_path },
+      { text: "Blog", path: admin_blog_posts_path },
+      { text: "Main Site", path: root_path }
+    ]
   end
 
   def nav_link_classes(path)
@@ -55,5 +55,14 @@ module ApplicationHelper
     )
 
     markdown.render(text).html_safe
+  end
+
+  def blog_post_markdown(blog_post)
+    otel_trace(
+      "markdown.render",
+      { "blog_post.id" => blog_post.id }
+    ) do
+      markdown(blog_post.content)
+    end
   end
 end

@@ -19,7 +19,7 @@ class Admin::ProjectsController < Admin::BaseController
     if @project.save
       redirect_to admin_projects_path, notice: "Project created successfully."
     else
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_content
     end
   end
 
@@ -35,7 +35,7 @@ class Admin::ProjectsController < Admin::BaseController
     if @project.update(project_params)
       redirect_to admin_projects_path, notice: "Project successfully updated."
     else
-      render :edit, status: :unprocessable_entity
+      render :edit, status: :unprocessable_content
     end
   end
 
@@ -43,6 +43,7 @@ class Admin::ProjectsController < Admin::BaseController
     @project = Project.find(params[:id])
 
     @project.destroy
+
     redirect_to admin_projects_path, notice: "Project deleted successfully."
   end
 

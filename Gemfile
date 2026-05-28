@@ -46,6 +46,12 @@ gem "redcarpet"
 # Use data stored at the top of markdown files for BlogPost fields
 gem "front_matter_parser"
 
+# OpenTelemtery
+gem "opentelemetry-sdk"
+gem "opentelemetry-exporter-otlp"
+gem "opentelemetry-instrumentation-rails"
+gem "opentelemetry-instrumentation-active_record"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"

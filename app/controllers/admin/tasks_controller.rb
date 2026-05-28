@@ -33,6 +33,7 @@ class Admin::TasksController < Admin::BaseController
     @task = @project.tasks.find(params[:id])
 
     @task.destroy
+
     redirect_to admin_project_path(@project)
   end
 

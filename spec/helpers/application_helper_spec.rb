@@ -58,6 +58,13 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
   end
 
+  describe "#blog_post_markdown" do
+    it "renders the blog post content as markdown" do
+      blog_post = create(:blog_post, content: "**bold**")
+      expect(helper.blog_post_markdown(blog_post)).to include("<strong>bold</strong>")
+    end
+  end
+
   describe "#markdown" do
     it "renders markdown to HTML" do
       expect(helper.markdown("**bold**")).to include("<strong>bold</strong>")

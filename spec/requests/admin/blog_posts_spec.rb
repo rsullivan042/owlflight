@@ -37,7 +37,7 @@ RSpec.describe "Admin::BlogPosts", type: :request do
       post admin_blog_posts_path,
         params: { blog_post: { title: nil } },
         headers: admin_headers
-      expect(response).to have_http_status(:unprocessable_entity)
+      expect(response).to have_http_status(:unprocessable_content)
     end
   end
 
@@ -64,7 +64,7 @@ RSpec.describe "Admin::BlogPosts", type: :request do
       patch admin_blog_post_path(blog_post),
         params: { blog_post: { title: nil } },
         headers: admin_headers
-      expect(response).to have_http_status(:unprocessable_entity)
+      expect(response).to have_http_status(:unprocessable_content)
     end
   end
 

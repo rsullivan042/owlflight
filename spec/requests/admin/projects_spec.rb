@@ -45,7 +45,7 @@ RSpec.describe "Admin::Projects", type: :request do
       post admin_projects_path,
         params: { project: { name: nil, subdomain: nil } },
         headers: admin_headers
-      expect(response).to have_http_status(:unprocessable_entity)
+      expect(response).to have_http_status(:unprocessable_content)
     end
   end
 
@@ -81,7 +81,7 @@ RSpec.describe "Admin::Projects", type: :request do
       patch admin_project_path(project),
         params: { project: { name: nil } },
         headers: admin_headers
-      expect(response).to have_http_status(:unprocessable_entity)
+      expect(response).to have_http_status(:unprocessable_content)
     end
   end
 

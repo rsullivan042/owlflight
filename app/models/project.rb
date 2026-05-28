@@ -1,6 +1,6 @@
 class Project < ApplicationRecord
   validates :name, presence: true
-  validates :subdomain, presence: true, format: { with: /\A(none|[a-z0-9\-]+)\z/i }
+  validates :subdomain, presence: true, format: { with: /\A[a-z0-9\-]+\z/i }
 
   has_many :tasks, dependent: :destroy
 

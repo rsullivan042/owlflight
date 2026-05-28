@@ -42,10 +42,12 @@ bundle exec rspec
 
 ## Environment Variables
 
-| Variable         | Description                        |
-|------------------|------------------------------------|
-| `DB_USERNAME`    | PostgreSQL username                |
-| `DB_PASSWORD`    | PostgreSQL password                |
-| `ADMIN_USERNAME` | HTTP basic auth username for admin |
-| `ADMIN_PASSWORD` | HTTP basic auth password for admin |
-| `PUMA_PORT`      | Port for the Puma web server       |
+| Variable                      | Description                        |
+|-------------------------------|------------------------------------|
+| `DB_USERNAME`                 | PostgreSQL username                |
+| `DB_PASSWORD`                 | PostgreSQL password                |
+| `ADMIN_USERNAME`              | HTTP basic auth username for admin |
+| `ADMIN_PASSWORD`              | HTTP basic auth password for admin |
+| `PUMA_PORT`                   | Port for the Puma web server       |
+| `OTEL_EXPORTER_OTLP_ENDPOINT` | OTLP Endpoint for trace exports    |
+| `OTEL_TRACES_EXPORTER`        | Exporter for OTel traces           |
